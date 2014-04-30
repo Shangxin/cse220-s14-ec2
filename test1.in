@@ -1,0 +1,15 @@
+create L1 
+append L1 100
+append L1 200
+append L1 300
+append L1 400
+append L1 500
+print L1
+copy L2 L1
+print L2
+free L1
+insert L2 300 250 
+insert L2 999 1 
+insert L2 100 50
+insert L2 500 450 
+printr L2
