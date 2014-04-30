@@ -181,11 +181,11 @@ static void ListTestCmdCopy
     
     char dstlistname[8];
     char srclistname[8];
-    fscanf(gFin, "%s%s", dstlistname,srclistname);
+    fscanf(gFin, "%s %s", dstlistname, srclistname);
     DList *srclist = ListManGetList(srclistname);
     DList *dstlist = DListCopy(srclist);
     ListManCreateList(dstlistname, dstlist);
-    fprintf(gFout, "copied %s\n", srclistname);
+    fprintf(gFout, "copied %s to %s\n", srclistname, dstlistname);
 }
 
 /*--------------------------------------------------------------------------------------------------------------
@@ -267,10 +267,10 @@ static void ListTestCmdFindAt
     DListNode *found_node = DListFindIndex(list, index);
     if (found_node != NULL)
     {
-        fprintf(gFout, "found %d from %s\n", index, listname);
+        fprintf(gFout, "found %s in %s at  %d\n", found_node , listname, index);
     }else
     {
-        fprintf(gFout, "failed to findat %d from %s\n", index, listname);
+        fprintf(gFout, "failed to findat %d in %s\n", index, listname);
     }
 }
 
@@ -327,7 +327,7 @@ static void ListTestCmdInsert
     if (DListInsertBefore(list, before, data)) {
         fprintf(gFout, "inserted %d before %d in %s\n", data, before, listname);
     } else {
-        fprintf(gFout, "failed to insert %d before %d in %s\n", data, before, listname);
+        fprintf(gFout, "failed to insert %d before %d in %s \n", data, before, listname);
     }
 }
 
@@ -435,7 +435,7 @@ static void ListTestCmdRemove
     int data;
     fscanf(gFin, "%s%d", listname, &data);
     DList *list = ListManGetList(listname);
-    if (DListRemoveData(list, data)) fprintf(gFout, "removed %d from %s\n", data, listname);
+    if (DListRemoveData(list, data)) fprintf(gFout, "removed at %d from %s\n", data, listname);
     else fprintf(gFout, "failed to remove %d from %s\n", data, listname);
 }
 
@@ -461,10 +461,10 @@ static void ListTestCmdRemoveAt
     DList *list= ListManGetList(listname);;
     if (DListRemoveIndex(list, index))
     {
-        fprintf(gFout, "removed %d from %s\n", index, listname);
+        fprintf(gFout, "removed node %d at %s\n", index, listname);
     }else
     {
-       fprintf(gFout, "failed to remove %d from %s\n", index, listname);
+       fprintf(gFout, "failed to remove node %d at %s\n", index, listname);
     }
 }
 
@@ -539,5 +539,9 @@ static void ListTest
 {
     char cmd[9];
     ListManInit();
-    while (fscanf(gFin, "%s", cmd) != EOF) ListTestPerform(cmd);
+    while (fscanf(gFin, "%s", cmd) != 0 )
+    {
+        
+    ListTestPerform(cmd);
+    }
 }
