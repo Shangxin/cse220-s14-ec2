@@ -51,7 +51,7 @@ static void ListTestCmdFind
     );
 
 /* Function declaration for ListTestCmdFindAt() */
-void ListTestCmdFindAt
+static void ListTestCmdFindAt
     (
     );
 
@@ -60,12 +60,12 @@ static void ListTestCmdFree
     );
 
 /* Function declaration for ListTestInsert() */
-void ListTestInsert
+static void ListTestCmdInsert
     (
     );
 
 /* Function declaration for ListTestInsertAt() */
-void ListTestInsertAt
+static void ListTestCmdInsertAt
     (
     );
 
@@ -74,17 +74,17 @@ static void ListTestCmdPrint
     );
 
 /* Function declaration for ListTestCmdPrintRev() */
-void ListTestCmdPrintRev
+static void ListTestCmdPrintRev
     (
     );
 
 /* Function declaration for ListTestRemove() */
-void ListTestRemove
+static void ListTestCmdRemove
     (
     );
 
 /* Function declaration for ListTestCmdRemoveAt() */
-void ListTestCmdRemoveAt
+static void ListTestCmdRemoveAt
     (
     );
 
@@ -121,10 +121,10 @@ static FILE *gFout;
  *        testing. On return, closes the input and output files and terminates.
  *------------------------------------------------------------------------------------------------------------*/
 int main
-    (
-    int   pArgc, 
-    char *pArgv[]
-    )
+(
+ int   pArgc,
+ char *pArgv[]
+ )
 {
     if (pArgc < 3) {
         fprintf(stderr, "Usage: ListTest inputfile outputfile\n");
@@ -256,7 +256,7 @@ static void ListTestCmdFind
  *     Print "failed to findat ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-void ListTestCmdFindAt
+static void ListTestCmdFindAt
 (
 )
 {
@@ -351,7 +351,7 @@ static void ListTestCmdInsertAt
     int index, data;
     fscanf(gFin, "%s%d%d", listname, &index, &data);
     DList *list = ListManGetList(listname);
-    if (DListInsertBefore(list, index, data)) {
+    if (DListInsertIndex(list, index, data)) {
         fprintf(gFout, "inserted %d before %d in %s\n", data, index, listname);
     } else {
         fprintf(gFout, "failed to insert %d before %d in %s\n", data, index, listname);
@@ -398,7 +398,7 @@ static void ListTestCmdPrint
  *     Print " ... does not exist"
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-void ListTestCmdPrintRev
+static void ListTestCmdPrintRev
 (
 )
 {
@@ -451,7 +451,7 @@ static void ListTestCmdRemove
  *     Print "failed ..."
  * End If
  *------------------------------------------------------------------------------------------------------------*/
-void ListTestCmdRemoveAt
+static void ListTestCmdRemoveAt
 (
 )
 {
