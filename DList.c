@@ -88,7 +88,7 @@ DList *DListAppend
     int    pData
     )
 {
-    assert(pList);
+        assert(pList);
     DListNode *new_node = DListNodeAlloc(pData, DListGetTail(pList), NULL);
     if (DListIsEmpty(pList)) {
         DListSetHead(pList, new_node);
@@ -123,8 +123,9 @@ DList *DListCopy
     DList *copy_list = DListAlloc();
     DListNode *traverse = DListGetHead(pSrcList);
     while (traverse != NULL) {
-        DListNodeGetData(traverse);
+        DListAppend(copy_list, DListNodeGetData(traverse));
         traverse = DListNodeGetNext(traverse);
+        
     }
     return copy_list;
 }
@@ -310,6 +311,7 @@ int DListGetIndex
     while (traverse != NULL) {
         if (DListNodeGetData(traverse) == pData) {
             return index;
+        }else{
             index++;
             traverse = DListNodeGetNext(traverse);
         }
@@ -320,7 +322,7 @@ int DListGetIndex
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: DListGetSize
  * DESCR: Accessor function for the pList->mSize data member. Assertion error if pList is NULL.
- *------------------------------------------------------------------------------------------------------------*/
+ ???*------------------------------------------------------------------------------------------------------------*/
 int DListGetSize
     (
     DList *pList
@@ -362,8 +364,7 @@ DList *DListInsertBefore
  )
 {
     assert(pList);
-    DListNode *a = DListFindData(pList, pBefore);
-    int index = a->mData;
+    int index = DListGetIndex(pList, pBefore);
     if (index < 0) {
         return NULL;
     }else{
@@ -426,15 +427,15 @@ DList *DListInsertIndex
  * FUNCT: DListIsEmpty
  * DESCR: Returns true if the pList is empty, false otherwise. Assertion error if pList is NULL.
  *------------------------------------------------------------------------------------------------------------*/
+
 bool DListIsEmpty
-    (
-    DList *pList
-    )
+(
+ DList *pList
+ )
 {
     assert(pList);
     return pList->mSize == 0;
 }
-
 /*--------------------------------------------------------------------------------------------------------------
  * FUNCT: DListRemoveData
  * DESCR: Finds and removes the first occurrence of a node containing data member set to pData in pList. On
