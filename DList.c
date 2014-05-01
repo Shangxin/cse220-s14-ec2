@@ -181,7 +181,7 @@ void DListDebugPrintRev
         fprintf(pStream, " ");
         traverse = DListNodeGetPrev(traverse);
     }
-    fprintf(pStream, "]");
+    fprintf(pStream, "] ");
 }
 
 /*--------------------------------------------------------------------------------------------------------------
