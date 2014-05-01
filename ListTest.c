@@ -267,7 +267,7 @@ static void ListTestCmdFindAt
     DListNode *found_node = DListFindIndex(list, index);
     if (found_node != NULL)
     {
-        fprintf(gFout, "found %d in %s at  %d\n", found_node->mData , listname, index);
+        fprintf(gFout, "found %s in %s at  %d\n", found_node , listname, index);
     }else
     {
         fprintf(gFout, "failed to findat %d in %s\n", index, listname);
