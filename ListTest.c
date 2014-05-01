@@ -267,7 +267,7 @@ static void ListTestCmdFindAt
     DListNode *found_node = DListFindIndex(list, index);
     if (found_node != NULL)
     {
-        fprintf(gFout, "found %s in %s at  %d\n", found_node , listname, index);
+        fprintf(gFout, "found %d in %s at %d\n", found_node->mData , listname, index);
     }else
     {
         fprintf(gFout, "failed to findat %d in %s\n", index, listname);
@@ -352,9 +352,9 @@ static void ListTestCmdInsertAt
     fscanf(gFin, "%s%d%d", listname, &index, &data);
     DList *list = ListManGetList(listname);
     if (DListInsertIndex(list, index, data)) {
-        fprintf(gFout, "inserted %d before %d in %s\n", data, index, listname);
+        fprintf(gFout, "inserted %d at %d in %s\n", data, index, listname);
     } else {
-        fprintf(gFout, "failed to insert %d before %d in %s\n", data, index, listname);
+        fprintf(gFout, "failed to insert %d at %d in %s\n", data, index, listname);
     }
 }
 
@@ -435,7 +435,7 @@ static void ListTestCmdRemove
     int data;
     fscanf(gFin, "%s%d", listname, &data);
     DList *list = ListManGetList(listname);
-    if (DListRemoveData(list, data)) fprintf(gFout, "removed at %d from %s\n", data, listname);
+    if (DListRemoveData(list, data)) fprintf(gFout, "removed %d from %s\n", data, listname);
     else fprintf(gFout, "failed to remove %d from %s\n", data, listname);
 }
 
@@ -461,10 +461,10 @@ static void ListTestCmdRemoveAt
     DList *list= ListManGetList(listname);;
     if (DListRemoveIndex(list, index))
     {
-        fprintf(gFout, "removed node %d at %s\n", index, listname);
+        fprintf(gFout, "removed node at %d from %s\n", index, listname);
     }else
     {
-       fprintf(gFout, "failed to remove node %d at %s\n", index, listname);
+       fprintf(gFout, "failed to remove node at %d\n", index);
     }
 }
 

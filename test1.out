@@ -13,24 +13,24 @@ failed to insert 1 before 999 in L2
 inserted 50 before 100 in L2
 inserted 450 before 500 in L2
 L2 = [ 500 450 400 300 250 200 100 50 ]
-removed at 250 from L2
+removed 250 from L2
 L2 = [ 50 100 200 300 400 450 500 ]
-removed at 50 from L2
+removed 50 from L2
 L2 = [ 100 200 300 400 450 500 ]
-removed at 500 from L2
+removed 500 from L2
 L2 = [ 100 200 300 400 450 ]
 failed to remove 999 from L2
-removed node 3 at L2
+removed node at 3 from L2
 L2 = [ 100 200 300 450 ]
-removed node 0 at L2
+removed node at 0 from L2
 L2 = [ 200 300 450 ]
-removed node 2 at L2
+removed node at 2 from L2
 L2 = [ 200 300 ]
-failed to remove node -1 at L2
-failed to remove node 2 at L2
-inserted 100 before 0 in L2
+failed to remove node at -1
+failed to remove node at 2
+inserted 100 at 0 in L2
 L2 = [ 100 200 300 ]
-inserted 150 before 1 in L2
+inserted 150 at 1 in L2
 L2 = [ 100 150 200 300 ]
 L1 created
 appended 100 to L1
@@ -48,28 +48,28 @@ failed to insert 1 before 999 in L2
 inserted 50 before 100 in L2
 inserted 450 before 500 in L2
 L2 = [ 500 450 400 300 250 200 100 50 ]
-removed at 250 from L2
+removed 250 from L2
 L2 = [ 50 100 200 300 400 450 500 ]
-removed at 50 from L2
+removed 50 from L2
 L2 = [ 100 200 300 400 450 500 ]
-removed at 500 from L2
+removed 500 from L2
 L2 = [ 100 200 300 400 450 ]
 failed to remove 999 from L2
-removed node 3 at L2
+removed node at 3 from L2
 L2 = [ 100 200 300 450 ]
-removed node 0 at L2
+removed node at 0 from L2
 L2 = [ 200 300 450 ]
-removed node 2 at L2
+removed node at 2 from L2
 L2 = [ 200 300 ]
-failed to remove node -1 at L2
-failed to remove node 2 at L2
-inserted 100 before 0 in L2
+failed to remove node at -1
+failed to remove node at 2
+inserted 100 at 0 in L2
 L2 = [ 100 200 300 ]
-inserted 150 before 1 in L2
+inserted 150 at 1 in L2
 L2 = [ 100 150 200 300 ]
-inserted 250 before 3 in L2
-failed to insert 100 before -1 in L2
-failed to insert 100 before 5 in L2
+inserted 250 at 3 in L2
+failed to insert 100 at -1 in L2
+failed to insert 100 at 5 in L2
 found 100 in L2
 found 300 in L2
 failed to find 999 in L2
@@ -84,10 +84,10 @@ L3 = [ 100 200 100 200 ]
 found 100 in L3
 inserted 50 before 100 in L3
 L3 = [ 50 100 200 100 200 ]
-removed at 100 from L3
+removed 100 from L3
 L3 = [ 50 200 100 200 ]
-found 50 in L3 at  0
-found 200 in L3 at  1
-found 200 in L3 at  3
+found 50 in L3 at 0
+found 200 in L3 at 1
+found 200 in L3 at 3
 failed to findat 4 in L3
 failed to findat -1 in L3
